@@ -1,0 +1,26 @@
+  <html>
+<head>
+    <title>Address</title>
+</head>
+<body>
+<h1>Address</h1>
+<a href="/address/add">Add new Address</a><br/>
+<br/>
+<table border = "1">
+    <!--Column headers-->
+    <tr><th>Street</th><th>Zip</th><th>Action</th></tr>
+    <% for(var i = 0; i < result.length; i++) {%>
+    <tr>
+        <td><a href="/address/?address_id=<%= result[i].address_id %>"><%= result[i].street %></a></td>
+        <td><%= result[i].zip_code%></td>
+        <td>
+            <form action="/address/delete/">
+                <input type="hidden" name="address_id" id="address_id" value="<%=result[i].address_id%>"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>
